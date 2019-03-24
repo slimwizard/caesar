@@ -19,7 +19,7 @@ class Message:
         valid_words = 0
         for word in msg_words: 
             if word.lower() in dict_words: valid_words += 1
-        return True if valid_words/(len(msg_words)-1) > .90 else False
+        return True if valid_words/(len(msg_words)-1) > .70 else False
 
 # decode message for a specific shift value
 def decode(text, shift):
@@ -41,19 +41,23 @@ def decode(text, shift):
 input = sys.stdin
 letters = list(input.read())
 
-# get words from dictionary
+# get words from dictionary and load them into a list
 dict_words = []
-dictionary = open('dictionary.txt', 'r')
+try:
+    dictionary = open('dictionary.txt', 'r')
+except:
+    print("Oops. Sorry big fella but I need a dictionary.txt file to work.")
+    exit()
 for line in dictionary:
     dict_words.append(line.lower().replace('\n', ''))
 
 # try all possible values for shift and append messages to list
 messages = []
 for i in range(1,len(ALPHABET)):
-    # messages.append({'message': decode_message(letters, i), 'shift': i})
     messages.append(Message(decode(letters, i), i))
 
-# find correctly decoded message 
+# find correctly decoded message and print the msg content and the shift value 
 for message in messages:
     if message.is_valid(): print(f'SHIFT={message.shift_value}\n{message.content}')
-        
+
+     
