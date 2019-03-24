@@ -11,6 +11,7 @@ import string
 
 ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+[{]}\|;:'\",<.>/? "
 
+# Message helper class for code cleanliness and readability
 class Message:
     def __init__(self, _content, _shift_value):
         self.content = _content
