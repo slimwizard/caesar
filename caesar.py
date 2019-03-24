@@ -2,6 +2,10 @@
 # Matthew Rice
 # CSC 444 - Applied Cryptography
 
+# uses Python v3
+# to run: 'python3 caesar.py < ciphertext-x.txt'
+# requires a dictionary.txt file with all entries seperated by line break to be in the working directory
+
 import sys
 import string
 
